@@ -1,103 +1,81 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <ImageBackground source={require('./Image/bg_login_day.png')} style={styles.imageBg}>
+        {/* <Image source={require('./Image/ic_mobile_plus_logo')}></Image> */}
+        <Text style={styles.tilte}>Selamat pagi, semangat terus ya hari ini!</Text>
+      </ImageBackground>
+
+      <View style={styles.loginSection}>
+        <Text style={styles.userTitle}>User name:</Text>
+        <TextInput style={styles.userTitle}
+          placeholder="Enter your password"/>
+        <Text style={styles.userTitle}>Pass password:</Text>
+        <Text style={styles.userTitle}>This is text input place for password</Text>
+
+        <TouchableOpacity style={styles.loginButton}>
+          <Text style={styles.loginButtonTitle}>LOGIN</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    backgroundColor: '#ddd'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
+  tilte: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: 'bold'
   },
-  highlight: {
-    fontWeight: '700',
+  loginSection: {
+    flex: 3.8,
+    marginTop: 30,
+    marginStart: 30,
   },
+  imageBg: {
+    flex: 6.2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  userTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingBottom: 20
+  },
+  loginButton: {
+    width: 350,
+    height: 45,
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1a7ae8'
+  },
+  loginButtonTitle: {
+    fontSize: 18,
+    color: 'white'
+  },
+
 });
 
 export default App;
