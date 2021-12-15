@@ -1,6 +1,5 @@
 import {AppRegistry} from 'react-native';
 
-import App from './App';
 //Screen
 import SplashFirst from './screens/splashComponent';
 import LoginScreen from './screens/loginComponent';
