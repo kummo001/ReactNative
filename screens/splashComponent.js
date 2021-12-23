@@ -1,8 +1,9 @@
 import React from 'react';
-import { StatusBar, StyleSheet, Text, View,Image, ToastAndroid } from 'react-native';
+import { StatusBar, StyleSheet, Text, View, Image, ToastAndroid } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './loginComponent';
+import MainScreen from './mainComponent';
 
 function SplashScreen ({navigation}) {
 
@@ -29,13 +30,14 @@ function MyStack() {
       <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name="Splash" component={SplashScreen} />
         <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
+        <Stack.Screen options={{headerShown: false}} name="Main" component={MainScreen} />
       </Stack.Navigator>
     );
-  }
+}
 
 export default function SplashFirst() {
     return (
-      <NavigationContainer>
+      <NavigationContainer independent={true}>
         <MyStack/>
       </NavigationContainer>
     );
