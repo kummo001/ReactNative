@@ -9,23 +9,21 @@ import {
   TextInput
 } from 'react-native';
 
-const App = () => {
+const LoginScreen = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./Image/bg_login_day.png')} style={styles.imageBg}>
-        {/* <Image source={require('./Image/ic_mobile_plus_logo')}></Image> */}
+      <ImageBackground source={require('../Image/bg_login_day.png')} style={styles.imageBg} resizeMode='stretch'>
+        <Image source={require('../Image/ic.png')} style={{ width: 150, height: 20 }} ></Image>
         <Text style={styles.tilte}>Selamat pagi, semangat terus ya hari ini!</Text>
       </ImageBackground>
 
       <View style={styles.loginSection}>
-        <Text style={styles.userTitle}>User name:</Text>
-        <TextInput style={styles.userTitle}
-          placeholder="Enter your password"/>
-        <Text style={styles.userTitle}>Pass password:</Text>
-        <Text style={styles.userTitle}>This is text input place for password</Text>
-
+        <Text style={styles.userTitle}>User name</Text>
+        <TextInput style={styles.input} />
+        <Text style={styles.userTitle}>Password</Text>
+        <TextInput style={styles.input} secureTextEntry={true} />
         <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.loginButtonTitle}>LOGIN</Text>
+          <Text style={styles.loginButtonTitle}>MASUK</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -45,23 +43,37 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    paddingTop: 40
   },
   loginSection: {
-    flex: 3.8,
-    marginTop: 30,
+    flex: 4.5,
     marginStart: 30,
+    marginEnd: 30
   },
   imageBg: {
-    flex: 6.2,
+    flex: 5.5,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    imageStyle: {
+      resizeMode: 'cover'
+    }
   },
   userTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    paddingBottom: 20
+  },
+  input: {
+    borderRadius: 40,
+    borderWidth: 2,
+    borderColor: '#5da4f5',
+    backgroundColor: '#fff',
+    height: 40,
+    marginTop: 10,
+    marginBottom: 20,
+    paddingStart: 20,
+    fontSize: 18
   },
   loginButton: {
     width: 350,
@@ -69,13 +81,13 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1a7ae8'
+    backgroundColor: '#5da4f5',
+    marginTop: 20,
   },
   loginButtonTitle: {
     fontSize: 18,
-    color: 'white'
+    color: 'white',
   },
-
 });
 
-export default App;
+export default LoginScreen;
