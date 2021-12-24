@@ -6,10 +6,37 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Alert 
 } from 'react-native';
 
-const LoginScreen = () => {
+export default function LoginScreen({ navigation }) {
+
+  const [userName, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const onPressHandler = () => {
+    if (userName == 'AndyHuynh' && password == '123456') {
+      navigation.navigate('Main');
+    } else {
+      Alert.alert(
+        "Login Failed",
+        "Your user name or password is incorrect",
+        [
+          {
+            text: "Ok",
+            style: "cancel",
+          },
+        ],
+        {
+          cancelable: true,
+        }
+      );
+    }
+  }
+
+
+
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../Image/bg_login_day.png')} style={styles.imageBg} resizeMode='stretch'>
@@ -19,10 +46,10 @@ const LoginScreen = () => {
 
       <View style={styles.loginSection}>
         <Text style={styles.userTitle}>User name</Text>
-        <TextInput style={styles.input} />
+        <TextInput style={styles.input} onChangeText={setUsername} />
         <Text style={styles.userTitle}>Password</Text>
-        <TextInput style={styles.input} secureTextEntry={true} />
-        <TouchableOpacity style={styles.loginButton}>
+        <TextInput style={styles.input} secureTextEntry={true} onChangeText={setPassword} />
+        <TouchableOpacity style={styles.loginButton} onPress={onPressHandler}>
           <Text style={styles.loginButtonTitle}>MASUK</Text>
         </TouchableOpacity>
       </View>
@@ -89,5 +116,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default LoginScreen;
