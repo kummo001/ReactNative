@@ -7,13 +7,16 @@ import {
   ImageBackground,
   TouchableOpacity,
   TextInput,
-  Alert 
+  Alert,
+  TouchableHighlight
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default function LoginScreen({ navigation }) {
 
   const [userName, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  // const [hidePass, setHidePass] = React.useState(true);
 
   const onPressHandler = () => {
     if (userName == 'AndyHuynh' && password == '123456') {
@@ -35,8 +38,6 @@ export default function LoginScreen({ navigation }) {
     }
   }
 
-
-
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../Image/bg_login_day.png')} style={styles.imageBg} resizeMode='stretch'>
@@ -52,6 +53,17 @@ export default function LoginScreen({ navigation }) {
         <TouchableOpacity style={styles.loginButton} onPress={onPressHandler}>
           <Text style={styles.loginButtonTitle}>MASUK</Text>
         </TouchableOpacity>
+      </View>
+      <View style={styles.footerSection}>
+        <TouchableHighlight style={styles.footerContent}>
+          <Text style={styles.footerContent}>Bantuan Login</Text>
+        </TouchableHighlight>
+
+        <View style={{ backgroundColor: '#3EB6E6', height: 28, width: 2, opacity: 0.4 }} />
+
+        <TouchableHighlight style={styles.footerContent}>
+          <Text style={styles.footerContent}>Hubungi Kami</Text>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -77,6 +89,17 @@ const styles = StyleSheet.create({
     flex: 4.5,
     marginStart: 30,
     marginEnd: 30
+  },
+  footerSection: {
+    margin: 30,
+    flexDirection: 'row',
+  },
+  footerContent: {
+    flex: 5,
+    textAlign: 'center',
+    fontSize: 15,
+    color: '#5da4f5',
+    fontWeight: '500'
   },
   imageBg: {
     flex: 5.5,
